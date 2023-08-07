@@ -1,7 +1,7 @@
 # Project Name: Personal Portfolio Website
 
 ## How To Setup
-1. Clone This Project `git clone https://github.com/sajib1066/personal_portfolio.git`
+1. Clone This Project `git clone https://github.com/drtiwari/personal_portfolio`
 2. Enter Project Directory `cd personal_portfolio`
 3. Create a Virtual Environment `virtualenv env`
 4. Activate Virtual Environment `source env/bin/activate`
