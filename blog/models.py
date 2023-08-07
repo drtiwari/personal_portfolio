@@ -6,17 +6,15 @@ from ckeditor_uploader.fields import RichTextUploadingField
 
 # create views here ...
 
+
 # create author profile views
 class AuthorProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=45)
-    photo = models.ImageField(upload_to='author/')
+    photo = models.ImageField(upload_to="author/")
     about = models.TextField()
-    gender_choice = (
-        ('male', 'Male'),
-        ('female', 'Female')
-    )
-    gender = models.CharField(choices=gender_choice, max_length=5)
+    gender_choice = (("male", "Male"), ("female", "Female"))
+    gender = models.CharField(choices=gender_choice, max_length=6)
     facebook_url = models.URLField(null=True, blank=True)
     twitter_url = models.URLField(null=True, blank=True)
     linkedin_url = models.URLField(null=True, blank=True)
@@ -27,10 +25,11 @@ class AuthorProfile(models.Model):
     def __str__(self):
         return self.name
 
+
 # create category views
 class PostCategory(models.Model):
     name = models.CharField(max_length=120, unique=True)
-    photo = models.ImageField(upload_to='category/')
+    photo = models.ImageField(upload_to="category/")
     about = models.TextField()
     author = models.ForeignKey(AuthorProfile, on_delete=models.SET_NULL, null=True)
     is_draft = models.BooleanField(default=False)
@@ -38,6 +37,7 @@ class PostCategory(models.Model):
 
     def __str__(self):
         return self.name
+
 
 # create tag views
 class Tag(models.Model):
@@ -49,10 +49,11 @@ class Tag(models.Model):
     def __str__(self):
         return self.name
 
+
 # create post views
 class Post(models.Model):
     title = models.CharField(max_length=245, unique=True)
-    photo = models.ImageField(upload_to='post/')
+    photo = models.ImageField(upload_to="post/")
     content = RichTextUploadingField()
     category = models.ForeignKey(PostCategory, on_delete=models.SET_NULL, null=True)
     tag = models.ManyToManyField(Tag)
